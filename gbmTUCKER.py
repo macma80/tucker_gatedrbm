@@ -169,15 +169,6 @@ class TUCKERGBMBINBIN(TUCKERGBM):
         self.actsx = torch.matmul(self.xstates,self.wxf)
         return self.y_probs, self.ystates
 
-    # def outprobs_(self, inputs):
-    #     actsx = torch.matmul(inputs,self.wxf)
-    #     actsh = torch.matmul(self.hstates,self.whf)
-    #     out = torch.matmul(self.wyf,torch.matmul(actsx,torch.matmul(actsh,self.core.transpose(1,2)).transpose(0,1)).transpose(1,0).transpose(2,1))
-    #     if self.actfun=='sigmoid':
-    #         #y_probs = F.sigmoid((out.transpose(1,2) + self.ob).transpose(2,1))
-    #         y_probs = (out.transpose(1, 2) + self.ob).transpose(2, 1)
-    #     return y_probs.mean(axis=2)
-
     def sample_from_p(self, p):
         random_prob = Variable(torch.rand(p.size()))
         if self.use_cuda:
